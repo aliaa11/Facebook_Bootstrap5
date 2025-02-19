@@ -1,0 +1,6 @@
+.error-message {
+    color: red;
+    display: none; /* Initially hidden */
+    font-size: 14px; /* Adjust font size as needed */
+    margin-top: 5px; /* Add some spacing above error message */
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <title>Registration</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light mb-5">
+        <div class="container-fluid">    
+            <!-- Search Bar -->
+            <form class="d-flex search-bar" role="search">
+             <a href="#"><i class="ms-3 fab fa-facebook fs-1 rounded-circle face-icone" ></i></a>
+            </form>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Sign Up</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="signUpForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="username" placeholder="Username">
+                                <div id="signUpNameError" class="alert alert-danger d-none mt-1" role="alert"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="signUpEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="signUpEmail" placeholder="Email">
+                                <div id="signUpEmailError" class="alert alert-danger d-none mt-1" role="alert"></div> </div>
+                            <div class="mb-3">
+                                <label for="signUpPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="signUpPassword" placeholder="Password">
+                                <div id="signUpPasswordError" class="alert alert-danger d-none mt-1" role="alert"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="signUpConfirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="signUpConfirmPassword" placeholder="Confirm Password">
+                                <div id="signUpConfirmPasswordError" class="alert alert-danger d-none mt-1" role="alert"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="signUpBtn">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../scripts/auth.js"></script>
+   <!-- <script>
+        signUp();
+    </script> -->
+  </body>
+</html>
