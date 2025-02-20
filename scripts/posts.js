@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     
         storyContainer.innerHTML = ''; 
     
-        const chunkSize = 5; 
-        for (let i = 0; i < stories.length; i += chunkSize) {
-            const chunk = stories.slice(i, i + chunkSize);
+        const SizeStory = 5; 
+        for (let i = 0; i < stories.length; i += SizeStory) {
+            const StoryLength = stories.slice(i, i + SizeStory);
             const storySlide = document.createElement("div");
             storySlide.classList.add("carousel-item"); 
             if (i === 0) {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             storySlide.innerHTML = `
                 <div class="d-flex flex-nowrap ">
-                    ${chunk.map(story => `
+                    ${StoryLength.map(story => `
                         <div class="card me-1 story-card">
                             <img src="${story.imageUrl}" class="d-block w-100 rounded story-image" alt="${story.name}" 
                             onerror="this.onerror=null;this.src='https://via.placeholder.com/200x300';">
@@ -221,64 +221,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     function displayPagination(totalPages) {
         const paginationContainer = document.getElementById("pagination-container");
-    
-        if (!paginationContainer) {
-            console.error("Pagination container not found!");
-            return;
-        }
-    
         paginationContainer.innerHTML = '';
-    
-        const pagesPerSlide = 10; 
-    
-        for (let i = 0; i < totalPages; i += pagesPerSlide) {
-            const slide = document.createElement("div");
-            slide.classList.add("carousel-item");
-            if (i === 0) slide.classList.add("active"); 
-    
-            const paginationList = document.createElement("ul");
-            paginationList.classList.add("pagination", "justify-content-center", "mt-3");
-    
-            for (let j = i; j < Math.min(i + pagesPerSlide, totalPages); j++) {
-                const pageItem = document.createElement("li");
-                pageItem.classList.add("page-item");
-    
-                const pageLink = document.createElement("a");
-                pageLink.classList.add("page-link");
-                pageLink.href = "#";
-                pageLink.textContent = j + 1;
-    
-                if (j + 1 === currentPage) {
-                    pageItem.classList.add("active");
-                }
-    
-                pageLink.addEventListener("click", async (event) => {
-                    event.preventDefault();
-                    currentPage = j + 1;
-                    const posts = await fetchPosts(currentPage);
-                    displayPosts(posts);
-                    displayPagination(totalPages);
-                });
-    
-                pageItem.appendChild(pageLink);
-                paginationList.appendChild(pageItem);
-            }
-    
-            slide.appendChild(paginationList);
-            paginationContainer.appendChild(slide);
-        }
-    
-        const carousel = document.getElementById("paginationCarousel")
-            if (carouselElement) {
-                new bootstrap.Carousel(carouselElement, {
-                    interval: false,
-                    ride: false
-                });
-            } else {
-                console.error("Element #storyCarousel not found!");
-            }
         
+        const controlsContainer = document.createElement("div");
+        controlsContainer.classList.add("d-flex", "justify-content-center", "mt-3");
+        
+        const prevButton = document.createElement("button");
+        prevButton.textContent = "Previous";
+        prevButton.classList.add("btn", "btn-primary", "me-2");
+        prevButton.disabled = currentPage === 1;
+        prevButton.addEventListener("click", async () => {
+            if (currentPage > 1) {
+                currentPage--;
+                const posts = await fetchPosts(currentPage);
+                displayPosts(posts);
+                displayPagination(totalPages);
+            }
+        });
+        
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "Next";
+        nextButton.classList.add("btn", "btn-primary");
+        nextButton.disabled = currentPage === totalPages;
+        nextButton.addEventListener("click", async () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                const posts = await fetchPosts(currentPage);
+                displayPosts(posts);
+                displayPagination(totalPages);
+            }
+        });
+        
+        controlsContainer.appendChild(prevButton);
+        controlsContainer.appendChild(nextButton);
+        paginationContainer.appendChild(controlsContainer);
     }
+    
     function updateProfileName() {
                 const loginData = JSON.parse(localStorage.getItem('loginData'));
                 if (loginData && profileLink) {

@@ -1,11 +1,3 @@
-const basePath = window.location.pathname.includes("repository-name") 
-    ? "/Facebook_Bootstrap5/" 
-    : "/";
-document.querySelectorAll("a").forEach(link => {
-    if (link.getAttribute("href") && !link.getAttribute("href").startsWith("http")) {
-        link.href = basePath + link.getAttribute("href");
-    }
-});
 export function login() {
     const logEmail = document.getElementById("email");
     const logPass = document.getElementById("password");
@@ -17,8 +9,6 @@ export function login() {
         loginBtn.addEventListener("click", function (event) {
             event.preventDefault();
 
-            localStorage.setItem("isLoggedIn", "true"); 
-            window.location.href = "index.html"; 
             const email = logEmail.value;
             const password = logPass.value;
             let isValid = true;
@@ -47,7 +37,7 @@ export function login() {
 
                 if (user) {
                     localStorage.setItem("loginData", JSON.stringify(user));
-                    window.location.href = "index.html";
+                    window.location.href = "../pages/index.html";
                 } else {
                     alert("Invalid email or password");
                 }
@@ -119,7 +109,7 @@ export function signUp() {
                 const newUser = { id: users.length + 1, email, password, name }; // Add unique ID
                 users.push(newUser);
                 localStorage.setItem("users", JSON.stringify(users));
-                window.location.href = "login.html";
+                window.location.href = "../pages/login.html";
             }
         });
     }
@@ -131,7 +121,7 @@ export function logout() {
         logoutBtn.addEventListener("click", function (event) {
             event.preventDefault();
             localStorage.removeItem("loginData");
-            window.location.href = "login.html";
+            window.location.href = "../pages/login.html";
         });
     }
 }
@@ -143,7 +133,7 @@ function updateProfileName() {
         profileLink.textContent = loginData.name;
         profileLink.addEventListener("click", function (event) {
             event.preventDefault();
-            window.location.href = "profile.html";
+            window.location.href = "../pages/profile.html";
         });
     }
 }
