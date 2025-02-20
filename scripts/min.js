@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
 
     if (!isLoggedIn || isLoggedIn !== "true") {
-        window.location.href = "login.html";
+        window.location.href = "../login.html";
     }
 });
 

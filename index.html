@@ -148,8 +148,13 @@
     </div>
     <script type="module" src="./scripts/posts.js"></script>
     <script type="module" src="./scripts/min.js"></script> 
-    <!-- <script>
-        window.location.href = "./login.html";
-    </script>     -->
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+    if (!localStorage.getItem("isLoggedIn")) {
+        window.location.href = "login.html"; 
+    }
+});
+
+    </script>
 </body>
 </html>
