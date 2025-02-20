@@ -129,7 +129,7 @@ async function initProfile() {
         }
     } else {
         console.error("No login data or user ID found in localStorage");
-        window.location.href = "../login.html";
+        window.location.href = "login.html";
     }
 }
 document.addEventListener("DOMContentLoaded", initProfile);

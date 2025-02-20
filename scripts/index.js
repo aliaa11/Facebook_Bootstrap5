@@ -18,7 +18,7 @@ function logout() {
         logoutBtn.addEventListener("click", function (event) {
             event.preventDefault();
             localStorage.removeItem("loginData");
-            window.location.href = "../pages/login.html";
+            window.location.href = "login.html";
         });
     }
 }
@@ -65,7 +65,7 @@ function login() {
         
                 if (user) {
                     localStorage.setItem("loginData", JSON.stringify(user));
-                    window.location.href = "../pages/index.html";
+                    window.location.href = "index.html";
                 } else {
                     alert("Invalid email or password");
                 }
@@ -138,7 +138,7 @@ function signUp() {
             if (isValid) {
                 users.push({ email, password, name });
                 localStorage.setItem("users", JSON.stringify(users));
-                window.location.href = "../pages/login.html";
+                window.location.href = "login.html";
             }
         });
     }
