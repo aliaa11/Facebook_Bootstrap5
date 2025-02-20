@@ -1,3 +1,11 @@
+const basePath = window.location.pathname.includes("repository-name") 
+    ? "/Facebook_Bootstrap5/" 
+    : "/";
+document.querySelectorAll("a").forEach(link => {
+    if (link.getAttribute("href") && !link.getAttribute("href").startsWith("http")) {
+        link.href = basePath + link.getAttribute("href");
+    }
+});
 export function login() {
     const logEmail = document.getElementById("email");
     const logPass = document.getElementById("password");
@@ -133,7 +141,7 @@ function updateProfileName() {
         profileLink.textContent = loginData.name;
         profileLink.addEventListener("click", function (event) {
             event.preventDefault();
-            window.location.href = "../profile_with_photos_and_posts.html";
+            window.location.href = "profile.html";
         });
     }
 }

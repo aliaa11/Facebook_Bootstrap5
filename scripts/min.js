@@ -26,11 +26,3 @@ document.addEventListener("DOMContentLoaded", () => {
     init();
 
 });
-const basePath = window.location.pathname.includes("repository-name") 
-    ? "/Facebook_Bootstrap5/" 
-    : "/";
-document.querySelectorAll("a").forEach(link => {
-    if (link.getAttribute("href") && !link.getAttribute("href").startsWith("http")) {
-        link.href = basePath + link.getAttribute("href");
-    }
-});
