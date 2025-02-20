@@ -37,7 +37,7 @@ export function login() {
 
                 if (user) {
                     localStorage.setItem("loginData", JSON.stringify(user));
-                    window.location.href = "../pages/index.html";
+                    window.location.href = "../index.html";
                 } else {
                     alert("Invalid email or password");
                 }
@@ -109,7 +109,7 @@ export function signUp() {
                 const newUser = { id: users.length + 1, email, password, name }; // Add unique ID
                 users.push(newUser);
                 localStorage.setItem("users", JSON.stringify(users));
-                window.location.href = "../pages/login.html";
+                window.location.href = "../login.html";
             }
         });
     }
@@ -121,7 +121,7 @@ export function logout() {
         logoutBtn.addEventListener("click", function (event) {
             event.preventDefault();
             localStorage.removeItem("loginData");
-            window.location.href = "../pages/login.html";
+            window.location.href = "../login.html";
         });
     }
 }
@@ -133,7 +133,7 @@ function updateProfileName() {
         profileLink.textContent = loginData.name;
         profileLink.addEventListener("click", function (event) {
             event.preventDefault();
-            window.location.href = "../pages/profile_with_photos_and_posts.html";
+            window.location.href = "../profile_with_photos_and_posts.html";
         });
     }
 }
