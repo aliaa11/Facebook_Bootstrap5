@@ -18,7 +18,7 @@ export function login() {
             event.preventDefault();
 
             localStorage.setItem("isLoggedIn", "true"); 
-            window.location.href = "../index.html"; 
+            window.location.href = "index.html"; 
             const email = logEmail.value;
             const password = logPass.value;
             let isValid = true;
@@ -47,7 +47,7 @@ export function login() {
 
                 if (user) {
                     localStorage.setItem("loginData", JSON.stringify(user));
-                    window.location.href = "../index.html";
+                    window.location.href = "index.html";
                 } else {
                     alert("Invalid email or password");
                 }
@@ -131,7 +131,7 @@ export function logout() {
         logoutBtn.addEventListener("click", function (event) {
             event.preventDefault();
             localStorage.removeItem("loginData");
-            window.location.href = "../login.html";
+            window.location.href = "login.html";
         });
     }
 }
